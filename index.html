@@ -21,13 +21,38 @@
   // My API key: 4b8e54632816953189ca4f20bb12518f
   // Need to add these together <citedby-count>205</citedby-count>
     
-    fetch('https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f')
-  .then(response => response.json())
-  .then(data => {
-    // Display the number of publications found
-    const publicationsElement = document.getElementById('publications');
-    publicationsElement.innerHTML = `You have ${data.search-results.opensearch:totalResults} publications.`;
+    //fetch('https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f')
+  //.then(response => response.json())
+  //.then(data => {
+    //// Display the number of publications found
+    //const publicationsElement = document.getElementById('publications');
+    //publicationsElement.innerHTML = `You have ${data.search-results.opensearch:totalResults} publications.`;
   });
-    </script>  
+  
+  async function getCitedbyCount() {
+  try {
+    // Make a request to the Scopus API to get the XML file
+    const response = await fetch(`https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f`);
+    // Get the XML string from the response
+    const xmlString = await response.text();
+    // Parse the XML string using the DOM parser
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlString, 'text/xml');
+    // Get the citedby-count element from the XML document
+    const citedbyCountElement = xml.getElementsByTagName('citedby-count')[0];
+    // Get the text content of the citedby-count element
+    const citedbyCount = citedbyCountElement.textContent;
+    // Display the citedby-count on your website
+    const element = document.getElementById('publications');
+    element.innerHTML = `Total citedby-count: ${citedbyCount}`;
+  } catch (error) {
+    console.error(error);
+  }
+}
+        // publicationsElement.innerHTML = `You have ${data.search-results.opensearch:totalResults} publications.`;
+     // Call the getCitedbyCount function
+      getCitedbyCount();
+  
+  </script>  
   </body>
 </html>
