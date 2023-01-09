@@ -21,7 +21,7 @@
   // My API key: 4b8e54632816953189ca4f20bb12518f
   // Need to add these together <citedby-count>205</citedby-count>
     
-    fetch('https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&apiKey=4b8e54632816953189ca4f20bb12518f')
+    fetch('https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f')
   .then(response => response.json())
   .then(data => {
     // Display the number of publications found
