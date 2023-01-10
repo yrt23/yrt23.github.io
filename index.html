@@ -27,32 +27,42 @@
     //// Display the number of publications found
     //const publicationsElement = document.getElementById('publications');
     //publicationsElement.innerHTML = `You have ${data.search-results.opensearch:totalResults} publications.`;
-  });
+  //});
   
-  async function getCitedbyCount() {
-  try {
-    // Make a request to the Scopus API to get the XML file
-    const response = await fetch(`https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f`);
-    // Get the XML string from the response
-    const xmlString = await response.text();
-    // Parse the XML string using the DOM parser
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlString, 'text/xml');
-    // Get the citedby-count element from the XML document
-    const citedbyCountElement = xml.getElementsByTagName('citedby-count')[0];
-    // Get the text content of the citedby-count element
-    const citedbyCount = citedbyCountElement.textContent;
-    // Display the citedby-count on your website
-    const element = document.getElementById('publications');
-    element.innerHTML = `Total citedby-count: ${citedbyCount}`;
-  } catch (error) {
-    console.error(error);
-  }
-}
-        // publicationsElement.innerHTML = `You have ${data.search-results.opensearch:totalResults} publications.`;
-     // Call the getCitedbyCount function
-      getCitedbyCount();
-  
+  //async function getCitedbyCount() {
+  //try {
+  //"use strict";
+    fetch(`https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f`)
+      // setup a promise
+      // the function receives the response from fetch
+      .then(function(resp){
+          // convert it to text
+          // this returns another promise
+          //console.log(resp);
+          //return resp.text();
+          return resp.json();
+      })
+      .then(function(data){
+        // Get the total number of publications
+        const totalResults = data["search-results"]["opensearch:totalResults"] ;
+        // console.log(totalResults);
+        var totalCount = 0;
+        //console.log(typeof totalCount);
+        for (let index = 0; index < totalResults; index++) {
+          let text_index = index.toString();
+          // We can also use the unary plus operator (+) to convert a string into a floating point number.
+          let indvCount = +data["search-results"]["entry"][text_index]["citedby-count"];
+          // console.log(indvCount);
+          // console.log(typeof indvCount);
+          totalCount += indvCount;
+        }
+        //console.log(totalCount);
+         // Display the number of publications found
+      const publicationsElement = document.getElementById('publications');
+      publicationsElement.innerHTML = `I have ` + totalCount + ` publications.`;
+      });
+        
+      
   </script>  
   </body>
 </html>
