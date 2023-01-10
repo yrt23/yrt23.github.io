@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Main</title>
+    <title>Publications</title>
 </head>
 <body>
-  <a href="publications.html"><button>Publications</button></a>
-  <h1> Hello world </h1>
-    <p> This is just a placeholder</p>
-    
-<h2>My Publications</h2>
 
+    <a href="index.html"><button>Home</button></a>
+
+<h1>My Publications</h1>
 <div id="publications"></div>
 
+<!-- https://www.scopus.com/authid/detail.uri?authorId=57358462200  -->
+Publication statistics from Yong Ren's <a href="https://www.scopus.com/authid/detail.uri?authorId=57358462200" target="_blank">Scopus Profile</a>.
+<!-- Updated on XXX. -->
 <script>
   // Make an API call to search for publications by an author
   // My API key: 4b8e54632816953189ca4f20bb12518f
@@ -56,7 +57,6 @@
           // console.log(typeof indvCount);
           totalCount += indvCount;
         }
-        console.log(totalResults);
         //console.log(totalCount);
          // Display the number of publications found
       const publicationsElement = document.getElementById('publications');
@@ -65,5 +65,5 @@
         
       
   </script>  
-  </body>
+</body>
 </html>
