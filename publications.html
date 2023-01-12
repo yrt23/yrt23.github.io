@@ -4,19 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&family=Chivo+Mono">
     <link rel="stylesheet" href="style.css">
     <title>Publications</title>
 </head>
 <body>
 
-    <a href="index.html"><button>Home</button></a>
+    <!-- <a href="index.html"><button>Home</button></a> -->
+<!-- Create navigation bar for the website -->
+<nav class="naviBar"> 
+  <!-- Make a section for logo -->
+  <div class="myLogo">TYR</div>
 
-<h1>My Publications</h1>
-<div id="publications"></div>
+<!-- Create an unordered list 
+    of the items in the naviBar -->
+<ul class="naviItems">
+
+  <!-- Hamburger menu for mobile site -->
+  <input type="checkBox" id="cBoxToggle"/>
+  <!-- Define a label for checkBox -->
+  <label for="cBoxToggle" class="hamburger">&#9776;</label>
+  <!-- Items in the naviBar -->
+
+<div class="menu">
+  <li class="menuHome"><a href="index.html">Home</a></li>
+  <li class="menuAboutMe"><a href="/">About me</a></li>
+  <!-- Start of projects -->
+  <li class="myProjects">
+     
+    <a href="/">Projects</a>
+     
+     <!-- Create dropdown items using unordered list -->
+     <ul class="dropdown">
+      <li><a href="/">Web development</a></li>
+      <li><a href="/">Data analytics</a></li>
+      <li><a href="/">Consulting</a></li>
+     </ul>
+     <!-- End of dropdown items -->
+  
+    </li>
+  <!-- End of projects -->
+  <li class="menuPublications"><a href="publications.html">Publications</a></li>
+  
+  <li class="menuButton"><button class="connectButton">Let's connect!</button></li>
+</div>
+<!-- <button class="connectButton">Let's connect!</button> -->
+</ul>
+</nav>
+
+<h2 class="h2_myPublications">My Publications</h2>
+<div id="myPublications" style="margin-top:1px; padding: 34px;"></div>
 
 <!-- https://www.scopus.com/authid/detail.uri?authorId=57358462200  -->
-Publication statistics from Yong Ren's <a href="https://www.scopus.com/authid/detail.uri?authorId=57358462200" target="_blank">Scopus Profile</a>.
+<div style="margin-top:1px; padding: 34px;">Publication statistics from Yong Ren's <a href="https://www.scopus.com/authid/detail.uri?authorId=57358462200" target="_blank">Scopus Profile</a>.</div>
 <!-- Updated on XXX. -->
+
+
+
 <script>
   // Make an API call to search for publications by an author
   // My API key: 4b8e54632816953189ca4f20bb12518f
@@ -59,7 +103,7 @@ Publication statistics from Yong Ren's <a href="https://www.scopus.com/authid/de
         }
         //console.log(totalCount);
          // Display the number of publications found
-      const publicationsElement = document.getElementById('publications');
+      const publicationsElement = document.getElementById('myPublications');
       publicationsElement.innerHTML = `I have ` + totalResults + ` publications and ` + totalCount + ` citations.`;
       });
         

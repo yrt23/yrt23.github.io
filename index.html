@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&family=Chivo+Mono">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Main</title>
 </head>
 <body>
+
   <!-- Create navigation bar for the website -->
   <nav class="naviBar"> 
     <!-- Make a section for logo -->
@@ -52,64 +54,121 @@
 
 
   </nav>
-  <a href="publications.html"><button>Publications</button></a>
+  <!-- <a href="publications.html"><button>Publications</button></a> -->
+  
+  <!-- ====================================================  -->
+  <!--               Part 1: Main introduction               -->
+  <!-- ==================================================== -->
   
   
-  <h1> Hello world </h1>
-    <p> This is just a placeholder</p>
-    
-<h2>My Publications</h2>
-
-<div id="publications"></div>
-
-<script>
-  // Make an API call to search for publications by an author
-  // My API key: 4b8e54632816953189ca4f20bb12518f
-  // Need to add these together <citedby-count>205</citedby-count>
-    
-    //fetch('https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f')
-  //.then(response => response.json())
-  //.then(data => {
-    //// Display the number of publications found
-    //const publicationsElement = document.getElementById('publications');
-    //publicationsElement.innerHTML = `You have ${data.search-results.opensearch:totalResults} publications.`;
-  //});
-  
-  //async function getCitedbyCount() {
-  //try {
-  //"use strict";
-    fetch(`https://api.elsevier.com/content/search/scopus?query=AU-ID(57358462200)&field=citedby-count&apiKey=4b8e54632816953189ca4f20bb12518f`)
-      // setup a promise
-      // the function receives the response from fetch
-      .then(function(resp){
-          // convert it to text
-          // this returns another promise
-          //console.log(resp);
-          //return resp.text();
-          return resp.json();
-      })
-      .then(function(data){
-        // Get the total number of publications
-        const totalResults = data["search-results"]["opensearch:totalResults"] ;
-        // console.log(totalResults);
-        var totalCount = 0;
-        //console.log(typeof totalCount);
-        for (let index = 0; index < totalResults; index++) {
-          let text_index = index.toString();
-          // We can also use the unary plus operator (+) to convert a string into a floating point number.
-          let indvCount = +data["search-results"]["entry"][text_index]["citedby-count"];
-          // console.log(indvCount);
-          // console.log(typeof indvCount);
-          totalCount += indvCount;
-        }
-        console.log(totalResults);
-        //console.log(totalCount);
-         // Display the number of publications found
-      const publicationsElement = document.getElementById('publications');
-      publicationsElement.innerHTML = `I have ` + totalResults + ` publications and ` + totalCount + ` citations.`;
-      });
+  <div class="myContainers">
+    <div class="row">
+      <div class="column-66">
+        <h1>Tan Yong Ren</h1>
+        <p class="myShortIntro"> 
+            Committed to assisting organisations in growing their businesses through 
+            data-driven insights and tech-centric approach.
+             <!--  I have a experience in 
+            digitalisation initiatives for coorperations and conducting market research 
+            
+            and collaborating with 
+            stakeholders, my primary goal is to provide a positive customer experience. 
+            I am committed to delivering results that drive success for my clients, 
+            having a wealth of experience driving, delivering, and meeting project objectives. -->
+        </p>
         
-      
-  </script>  
+        <a href="https://www.linkedin.com/in/tanyongren/" class="fa fa-linkedin"></a>
+        <a href="https://github.com/yrt23" class="fa fa-github"></a>
+
+
+      </div>
+      <div class="column-33">
+        <ul class="mySkills">
+          <li><b>Programming skills</b>: JavaScript, HTML/CSS, Python, SQL</li>
+          <li><b>Business skills</b>: Market research, user experience, stakeholder management</li>
+        </ul>       
+      </div>
+    </div>
+  </div>
+  
+  <div class="myContainers">
+    <div class="row">
+      <div class="column-33">
+        <h1>My projects</h1>
+      </div>
+      <div class="column-66">
+        <!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <a href="/"><img src="https://images.unsplash.com/photo-1426024120108-99cc76989c71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80" style="width:100%"></a>
+    <div class="text">Caption Text</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <a href="/"><img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="width:100%"></a>
+    <div class="text">Caption Two</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <a href="/"><img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80" style="width:100%"></a>
+    <div class="text">Caption Three</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+      </div>
+    </div>
+  </div>
+  
+    <script>
+      // JS to make the slideshow
+
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      // Next/previous controls
+      function plusSlides(n) {
+      showSlides(slideIndex += n);
+      }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+          }
+
+            function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                          slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                          dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            }
+    </script>
+
+
+
   </body>
 </html>
